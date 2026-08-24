@@ -30,31 +30,43 @@
     .centered {
         @apply flex justify-center items-center;
     }
-    buttonpadding {
+    .fullcenter {
+        @apply w-full h-full flex justify-center items-center;
+    }
+    .buttonpadding {
         @apply px-md py-xs;
     }
     .padding {
         @apply px-4 py-2;
     }
+    .btn-primary {
+        @apply bg-orange-custom text-light-custom hover:bg-yellow-custom;
+    }
 }
 
 h1 {
-    @apply text-[108px] font-black font-display;
+    @apply font-black font-display;
+    font-size: clamp(48px, 10vw, 148px);
 }
 h2 {
-    @apply text-[72px] font-bold font-display;
+    @apply font-bold font-display;
+    font-size: clamp(32px, 6vw, 72px);
 }
 h3 {
-    @apply text-[36px] font-bold font-display;
+    @apply font-bold font-display;
+    font-size: clamp(24px, 4vw, 36px);
 }
 h4 {
-    @apply text-[36px] font-bold font-body;
+    @apply font-bold font-display;
+    font-size: clamp(16px, 2.5vw, 26px);
 }
 h5 {
-    @apply text-[18px] font-bold font-body;
+    @apply font-bold font-body;
+    font-size: clamp(12px, 1.5vw, 18px);
 }
 h6 {
-    @apply text-[8px] font-bold font-body;
+    @apply font-bold font-body;
+    font-size: 8px;
 }
 
 .noise {
@@ -72,4 +84,9 @@ h6 {
     25% { transform: translate(-2%, 2%); }
     50% { transform: translate(2%, -1%); }
     75% { transform: translate(-1%, -2%); }
+}
+
+.about-title .word,
+.about-subtitle .word {
+    margin-right: 0.25em;
 }

@@ -1,4 +1,7 @@
 import Navbar from "@/app/components/navbar";
+import Hero from "@/app/components/hero";
+import About from "@/app/components/about";
+
 
 export default function Home() {
   return (
@@ -6,8 +9,8 @@ export default function Home() {
         <div className={"noise"}/>
 
         <Navbar />
-
-
+        <Hero />
+        <About />
 
     </main>
   );

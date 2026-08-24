@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+    --color-green-custom: #606c38;
+    --color-dark-green-custom: #283618;
+    --color-light-custom: #fefae0;
+    --color-yellow-custom: #dda15e;
+    --color-orange-custom: #bc6c25;
+
+    --font-display: 'Inter Display', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-pp: 'PP Mori', sans-serif;
+
+    --spacing-xxs: 4px;
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 64px;
+    --spacing-xxl: 72px;
+
+    --font-sm: 8px;
+    --font-md: 18px;
+    --font-lg: 36px;
+    --font-xl: 72px;
+    --font-header: 108px;
+}
+
+@layer components {
+    .centered {
+        @apply flex justify-center items-center;
+    }
+    buttonpadding {
+        @apply px-md py-xs;
+    }
+    .padding {
+        @apply px-4 py-2;
+    }
+}
+
+h1 {
+    @apply text-[108px] font-black font-display;
+}
+h2 {
+    @apply text-[72px] font-bold font-display;
+}
+h3 {
+    @apply text-[36px] font-bold font-display;
+}
+h4 {
+    @apply text-[36px] font-bold font-body;
+}
+h5 {
+    @apply text-[18px] font-bold font-body;
+}
+h6 {
+    @apply text-[8px] font-bold font-body;
+}
+
+.noise {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.1;
+    background-image: radial-gradient(circle, var(--color-dark-green-custom) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+}
+
+@keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-2%, 2%); }
+    50% { transform: translate(2%, -1%); }
+    75% { transform: translate(-1%, -2%); }
+}

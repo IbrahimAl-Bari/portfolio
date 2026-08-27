@@ -38,17 +38,12 @@ const Hero = () => {
                     ease: 'power3.out',
                     duration: 0.5,
                 }, "-=0.5")
-                .from('.circle-path', {
-                    drawSVG: '0%',
-                    duration: 1,
-                    ease: 'power2.inOut',
-                }, "-=0.5")
                 .to('.animated-button', {
                     opacity: 1,
                     y: 0,
                     duration: 0.6,
                     ease: 'power2.out',
-                }, "-=0.5")
+                }, "-=0.7")
         })
 
         return () => {

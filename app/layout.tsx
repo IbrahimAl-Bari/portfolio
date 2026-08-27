@@ -10,8 +10,8 @@ const interDisplay = localFont({
 const inter = Inter({ subsets: ['latin'], variable: '--font-body' })
 
 const ppMori = localFont({
-  src: '../public/fonts/ppmori-semibold.otf',
-  variable: '--font-nav',
+  src: '../public/fonts/PPMori-SemiBold.otf',
+  variable: '--font-ppmori',
 })
 
 export const metadata: Metadata = {
@@ -29,7 +29,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${interDisplay.variable} ${ppMori.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+      {children}
+      </body>
     </html>
   );
 }

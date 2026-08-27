@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <div className={"w-full h-30 centered absolute"}>
 
-            <div className={"gap-3 h-[62px] max-sm:h-[48px] px-md flex items-center text-light-custom justify-between bg-green-custom rounded-full font-pp"}>
+            <div data-bg="dark" className={"gap-3 h-[62px] max-sm:h-[48px] px-md flex items-center  text-light-custom justify-between bg-green-custom rounded-full font-pp"}>
 
                 <h5 className="padding cursor-pointer relative group">
                     <span className="relative z-10 group-hover:text-dark-green-custom transition-colors duration-300">Home</span>

@@ -9,7 +9,7 @@
 
     --font-display: 'Inter Display', sans-serif;
     --font-body: 'Inter', sans-serif;
-    --font-pp: 'PP Mori', sans-serif;
+    --font-ppmori: 'PPMori', sans-serif;
 
     --spacing-xxs: 4px;
     --spacing-xs: 8px;
@@ -44,9 +44,13 @@
     }
 }
 
+body {
+    overflow-x: hidden;
+}
+
 h1 {
     @apply font-black font-display;
-    font-size: clamp(48px, 10vw, 148px);
+    font-size: clamp(44px, 10vw, 148px);
 }
 h2 {
     @apply font-bold font-display;
@@ -56,6 +60,7 @@ h3 {
     @apply font-bold font-display;
     font-size: clamp(24px, 4vw, 36px);
 }
+
 h4 {
     @apply font-bold font-display;
     font-size: clamp(16px, 2.5vw, 26px);
@@ -73,9 +78,17 @@ h6 {
     position: absolute;
     inset: 0;
     z-index: 1;
-    opacity: 0.1;
+    opacity: 0.2;
     background-image: radial-gradient(circle, var(--color-dark-green-custom) 1px, transparent 1px);
     background-size: 3px 3px;
+    pointer-events: none;
+}
+
+.noise2 {
+    z-index: 1;
+    opacity: 0.5;
+    background-image: radial-gradient(circle, var(--color-dark-green-custom) 1px, transparent 1px);
+    background-size: 10px 10px;
     pointer-events: none;
 }
 
@@ -89,4 +102,23 @@ h6 {
 .about-title .word,
 .about-subtitle .word {
     margin-right: 0.25em;
+}
+
+.xray-cursor {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    clip-path: circle(80px at var(--x, -200px) var(--y, -200px));
+    background: rgba(255, 0, 0, 0.3); /* TEMP debug - should see a red circle */
+    backdrop-filter: invert(1) hue-rotate(180deg);
+    -webkit-backdrop-filter: invert(1) hue-rotate(180deg);
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+.animate-marquee {
+    animation: marquee 20s linear infinite;
 }

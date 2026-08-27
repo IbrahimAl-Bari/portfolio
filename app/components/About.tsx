@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useRef } from 'react'
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react"
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP)
 
 const About = () => {
+    const containerRef = useRef<HTMLDivElement>(null)
 
     useGSAP(() => {
         let splitTitle: SplitText | undefined
@@ -58,15 +59,19 @@ const About = () => {
         return () => {
             splitTitle?.revert()
             splitSubtitle?.revert()
-            ScrollTrigger.getAll().forEach(t => t.kill())
         }
-    })
+    }, { scope: containerRef })
 
     return (
-        <div className={"w-full h-full pl-5 about-section bg-dark-green-custom"}>
-            <h1 className={"text-yellow-custom about-title"}>Just a silly 16yo trying To Break into Tech.</h1>
-            <h2 className={"text-yellow-custom about-subtitle"}>Big Dreams, Big Hopes.</h2>
-            <h2 className={"text-light-custom absolute stop left-[45%] mt-80"}>Stop</h2>
+        <div ref={containerRef} className={"w-full h-full about-section bg-dark-green-custom"}>
+
+            <div className={"noise"}/>
+
+            <h1 className={"text-yellow-custom about-title pl-5"}>Just a 16-years-old Trying To Break into Tech.</h1>
+            <h2 className={"text-yellow-custom about-subtitle pl-5"}>Big Dreams, Big Hopes.</h2>
+            <div className={"w-full h-full centered pr-5"}>
+                <h2 className={"text-light-custom absolute stop"}>Stop</h2>
+            </div>
         </div>
     )
 }

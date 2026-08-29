@@ -35,24 +35,68 @@ const Usages = () => {
         const icons = gsap.utils.toArray<HTMLElement>('.tech-icon')
 
         icons.forEach((icon) => {
-            icon.addEventListener('mouseenter', () => {
+            const handleMouseEnter = () => {
+                const siblings = icons.filter((i) => i !== icon)
+
+                // Stop any conflicting reset animations on these elements
+                gsap.killTweensOf([icon, ...siblings])
+
+                // Elevate hovered icon
                 gsap.to(icon, {
-                    scale: 1.3,
-                    rotate: gsap.utils.random(-15, 15),
+                    scale: 1.35,
+                    y: -10,
+                    rotate: gsap.utils.random(-8, 8),
                     color: '#fefae0',
-                    ease: 'back.out(3)',
+                    filter: 'drop-shadow(0px 10px 15px rgba(221, 161, 94, 0.4))',
+                    ease: 'power2.out',
+                    duration: 0.3,
+                    zIndex: 20,
                 })
-            })
-            icon.addEventListener('mouseleave', () => {
+
+                // Dim non-hovered siblings
+                gsap.to(siblings, {
+                    scale: 0.9,
+                    opacity: 0.35,
+                    filter: 'blur(2px)',
+                    ease: 'power2.out',
+                    duration: 0.3,
+                    zIndex: 1,
+                })
+            }
+
+            const handleMouseLeave = () => {
+                const siblings = icons.filter((i) => i !== icon)
+
+                gsap.killTweensOf([icon, ...siblings])
+
+                // Reset target icon
                 gsap.to(icon, {
                     scale: 1,
+                    y: 0,
                     rotate: 0,
                     color: '#dda15e',
+                    opacity: 1,
+                    filter: 'blur(0px) drop-shadow(0px 0px 0px rgba(0,0,0,0))',
                     ease: 'elastic.out(1, 0.5)',
+                    duration: 0.5,
+                    zIndex: 1,
                 })
-            })
+
+                // Reset siblings back to normal
+                gsap.to(siblings, {
+                    scale: 1,
+                    opacity: 1,
+                    filter: 'blur(0px)',
+                    ease: 'power2.out',
+                    duration: 0.3,
+                })
+            }
+
+            icon.addEventListener('mouseenter', handleMouseEnter)
+            icon.addEventListener('mouseleave', handleMouseLeave)
         })
 
+        // SplitText Heading Logic
         let splitHeading: SplitText | undefined
 
         gsap.set('.usages-title', { display: 'none' })
@@ -67,7 +111,6 @@ const Usages = () => {
                 trigger: '.usages-title',
                 start: 'top 80%',
                 once: true,
-                markers: true,
                 onEnter: () => {
                     gsap.to(splitHeading.words, {
                         y: 0,
@@ -104,7 +147,7 @@ const Usages = () => {
                         {usedTech.map((Icon, i) => (
                             <Icon
                                 key={i}
-                                className="tech-icon text-yellow-custom transition-all duration-300 cursor-pointer"
+                                className="tech-icon text-yellow-custom cursor-pointer relative"
                                 size={56}
                             />
                         ))}

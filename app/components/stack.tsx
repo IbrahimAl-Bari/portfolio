@@ -21,7 +21,6 @@ const Stack = () => {
                 trigger: ".chat-section",
                 start: "bottom bottom",
                 end: "+=500",
-                markers: true,
             },
         })
 
@@ -48,7 +47,6 @@ const Stack = () => {
                 trigger: '.stack-title',
                 start: 'top 80%',
                 once: true,
-                markers: true,
                 onEnter: () => {
                     gsap.to(splitHeading.words, {
                         y: 0,
@@ -80,6 +78,8 @@ const Stack = () => {
 
                 <div
                     className="
+                    pointer-events-none
+        scrollbar-none
         chat-box
         relative overflow-hidden
         w-[min(900px,calc(100vw-48px))]

@@ -3,6 +3,8 @@ import Hero from "@/app/components/Hero";
 import About from "@/app/components/About";
 import Stack from "@/app/components/stack";
 import Usages from "@/app/components/usages";
+import Questions from "@/app/components/questions";
+import Projects from "@/app/components/projects";
 
 
 export default function Home() {
@@ -16,7 +18,8 @@ export default function Home() {
         <About />
         <Stack />
         <Usages />
-
+        <Projects />
+        <Questions />
 
     </main>
   );

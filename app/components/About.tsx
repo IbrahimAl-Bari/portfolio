@@ -65,7 +65,7 @@ const About = () => {
     return (
         <div ref={containerRef} className={"w-full h-full about-section bg-dark-green-custom"}>
 
-            <div className={"noise"}/>
+            <div className={"noise"} />
 
             <h1 className={"text-yellow-custom about-title pl-5"}>Just a 16-years-old Trying To Break into Tech.</h1>
             <h2 className={"text-yellow-custom about-subtitle pl-5"}>Big Dreams, Big Hopes.</h2>
